@@ -17,7 +17,7 @@ extents = Vector2( 64, 10 )
 custom_solver_bias = 0.0
 extents = Vector2( 64, 10 )
 
-[node name="Roads" type="Node2D"]
+[node name="Roads" type="Node2D" index="0"]
 
 [node name="road_asphalt04" type="Sprite" parent="." index="0"]
 
@@ -31,7 +31,7 @@ __meta__ = {
 [node name="StaticBody2D2" type="StaticBody2D" parent="road_asphalt04" index="0"]
 
 input_pickable = false
-collision_layer = 1
+collision_layer = 2
 collision_mask = 1
 constant_linear_velocity = Vector2( 0, 0 )
 constant_angular_velocity = 0.0
@@ -60,7 +60,7 @@ _sections_unfolded = [ "Transform" ]
 [node name="StaticBody2D2" type="StaticBody2D" parent="road_asphalt40" index="0"]
 
 input_pickable = false
-collision_layer = 1
+collision_layer = 2
 collision_mask = 1
 constant_linear_velocity = Vector2( 0, 0 )
 constant_angular_velocity = 0.0
@@ -76,7 +76,6 @@ _sections_unfolded = [ "Material", "Pause", "Transform", "Visibility", "Z Index"
 
 [node name="road_asphalt87" type="Sprite" parent="." index="3"]
 
-editor/display_folded = true
 position = Vector2( 64, 192 )
 texture = ExtResource( 4 )
 _sections_unfolded = [ "Transform" ]
@@ -87,7 +86,7 @@ __meta__ = {
 [node name="StaticBody2D" type="StaticBody2D" parent="road_asphalt87" index="0"]
 
 input_pickable = false
-collision_layer = 1
+collision_layer = 2
 collision_mask = 1
 constant_linear_velocity = Vector2( 0, 0 )
 constant_angular_velocity = 0.0
@@ -116,12 +115,13 @@ _sections_unfolded = [ "Transform" ]
 [node name="StaticBody2D" type="StaticBody2D" parent="road_asphalt89" index="0"]
 
 input_pickable = false
-collision_layer = 1
+collision_layer = 2
 collision_mask = 1
 constant_linear_velocity = Vector2( 0, 0 )
 constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
+_sections_unfolded = [ "Collision" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="road_asphalt89/StaticBody2D" index="0"]
 

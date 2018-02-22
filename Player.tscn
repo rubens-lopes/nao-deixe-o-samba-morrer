@@ -10,15 +10,15 @@ custom_solver_bias = 0.0
 radius = 35.0
 height = 62.0
 
-[node name="Player" type="KinematicBody2D" index="0"]
+[node name="Player" type="KinematicBody2D"]
 
 rotation = 1.5708
 input_pickable = false
 collision_layer = 1
-collision_mask = 1
+collision_mask = 2
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Collision", "Transform" ]
 __meta__ = {
 "_edit_group_": true
 }
@@ -60,8 +60,5 @@ editor_draw_drag_margin = true
 _sections_unfolded = [ "Drag Margin", "Editor", "Limit", "Material", "Offset", "Pause", "Smoothing", "Transform", "Visibility", "Z Index" ]
 
 [node name="DebugDraw" parent="." index="3" instance=ExtResource( 3 )]
-
-visible = false
-_sections_unfolded = [ "Visibility" ]
 
 

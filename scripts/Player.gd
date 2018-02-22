@@ -9,7 +9,7 @@ var velocity = Vector2()
 var can_move = false
 
 var state = IDLE
-enum {GAS, AUTO_BREAK, BREAK, IDLE}
+enum {THRUST, AUTO_BREAK, BREAK, IDLE}
 
 func _ready():
 	pass
@@ -33,7 +33,7 @@ func _physics_process(delta):
 		state = BREAK
 		acc.x = -1
 	elif Input.is_action_pressed("ui_right"):
-		state = GAS
+		state = THRUST
 	elif velocity.x > 750:
 		state = AUTO_BREAK
 	else:
@@ -46,7 +46,7 @@ func _physics_process(delta):
 	velocity += acc * delta
 	match(state):
 		AUTO_BREAK: velocity.x = max(velocity.x, 750)
-		GAS: velocity.x = min(velocity.x, 1500)
+		THRUST: velocity.x = min(velocity.x, 1500)
 		BREAK: velocity.x = max(velocity.x, 500)
 		IDLE: velocity.x = min(velocity.x, 750)
 	

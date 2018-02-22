@@ -7,3 +7,4 @@ func _on_Visibility_screen_exited():
 
 func _on_Visibility_screen_entered():
 	emit_signal("screen_entered")
+	

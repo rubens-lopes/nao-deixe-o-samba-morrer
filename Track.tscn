@@ -36,8 +36,8 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Position2D" type="Position2D" parent="." index="1"]
 
-position = Vector2( 235, 490 )
-_sections_unfolded = [ "Transform", "Z Index" ]
+position = Vector2( 240, 148 )
+_sections_unfolded = [ "Transform", "Visibility" ]
 
 [connection signal="screen_entered" from="Visibility" to="." method="_on_Visibility_screen_entered"]
 
