@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/car_yellow_4.png" type="Texture" id=2]
+[ext_resource path="res://DebugDraw.tscn" type="PackedScene" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
 
@@ -21,10 +22,6 @@ _sections_unfolded = [ "Transform" ]
 __meta__ = {
 "_edit_group_": true
 }
-ACCELERATION = Vector2( 0, 150 )
-MAX_VELOCITY = Vector2( 1000, 500 )
-MIN_VELOCITY = Vector2( 1000, 0 )
-FRICTION = -0.1
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
@@ -61,5 +58,10 @@ editor_draw_screen = true
 editor_draw_limits = true
 editor_draw_drag_margin = true
 _sections_unfolded = [ "Drag Margin", "Editor", "Limit", "Material", "Offset", "Pause", "Smoothing", "Transform", "Visibility", "Z Index" ]
+
+[node name="DebugDraw" parent="." index="3" instance=ExtResource( 3 )]
+
+visible = false
+_sections_unfolded = [ "Visibility" ]
 
 

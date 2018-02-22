@@ -1,17 +1,19 @@
 extends KinematicBody2D
 
-export (Vector2) var ACCELERATION = Vector2(0, 150)
-export (Vector2) var MAX_VELOCITY = Vector2(1000, 500)
-export (Vector2) var MIN_VELOCITY = Vector2(1000, 0)
-export (float) var FRICTION = -0.1
+signal hit
 
-var velocity = Vector2(1000, 0)
-
+var acceleration = Vector2(500, 1000)
+var friction = Vector2(-10, -150)
+var bounce_coefficent = 0.7
+var velocity = Vector2()
 var can_move = false
+
+var state = IDLE
+enum {GAS, AUTO_BREAK, BREAK, IDLE}
 
 func _ready():
 	pass
-	
+
 func _physics_process(delta):
 	if not can_move:
 		return
@@ -21,14 +23,34 @@ func _physics_process(delta):
 		acc.y = -1
 	if Input.is_action_pressed("ui_down"):
 		acc.y = 1
-
-	acc.y *= ACCELERATION.y
+		
+	acc.y *= acceleration.y
 	if acc.y == 0:
-		acc.y = velocity.y * FRICTION
-
-	velocity += acc
-
-	velocity.x = clamp(velocity.x, MIN_VELOCITY.x, MAX_VELOCITY.x)
-	velocity.y = clamp(velocity.y, -MAX_VELOCITY.y, MAX_VELOCITY.y)
+        acc.y = velocity.y * friction.y * delta
 	
-	move_and_slide(velocity)
+	acc.x = 1
+	if Input.is_action_pressed("ui_left"):
+		state = BREAK
+		acc.x = -1
+	elif Input.is_action_pressed("ui_right"):
+		state = GAS
+	elif velocity.x > 750:
+		state = AUTO_BREAK
+	else:
+		state = IDLE
+		
+	acc.x *= acceleration.x
+	if state == AUTO_BREAK:
+		acc.x = velocity.x * friction.x * delta
+	
+	velocity += acc * delta
+	match(state):
+		AUTO_BREAK: velocity.x = max(velocity.x, 750)
+		GAS: velocity.x = min(velocity.x, 1500)
+		BREAK: velocity.x = max(velocity.x, 500)
+		IDLE: velocity.x = min(velocity.x, 750)
+	
+	var collision = move_and_collide(velocity * delta)
+
+	if collision:
+		velocity = velocity.bounce(collision.normal) * bounce_coefficent

@@ -19,10 +19,10 @@ func add_track():
 	$Tracks.add_child(track)
 	
 	var n_obstacles = round(rand_range(2, 5))
-	print(n_obstacles)
 	for unused in range(n_obstacles):
 		var obstacle = Obstacle.instance()
-		obstacle.position = Vector2(rand_range(last_position + 256, last_position + screen_size.x), round(rand_range(148 + 64, 490 - 64))) #64 obstacle diagonal
+		obstacle.position = Vector2(rand_range(last_position + 256, last_position + screen_size.x), 
+				round(rand_range(148 + 64, 490 - 64))) #64 obstacle diagonal
 		$Obstacles.add_child(obstacle)
 		
 	last_position += screen_size.x
