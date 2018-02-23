@@ -1,0 +1,18 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/chocalho.ogg-787236cc1b31b88930133f619bc9d1ab.oggstr"
+
+[deps]
+
+source_file="res://audio/chocalho.ogg"
+source_md5="af0e07cb3cca16d3a5fa16ab6c6b1dc8"
+
+dest_files=[ "res://.import/chocalho.ogg-787236cc1b31b88930133f619bc9d1ab.oggstr" ]
+dest_md5="16ccd2213886849a3c940a4718ed6027"
+
+[params]
+
+loop=true
+loop_offset=0

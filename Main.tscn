@@ -1,17 +1,19 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scripts/Main.gd" type="Script" id=1]
 [ext_resource path="res://Track.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Cone.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Musician.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=5]
 
-[node name="Main" type="Node2D"]
+[node name="Main" type="Node2D" index="0"]
 
 position = Vector2( 0, 80 )
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
 Track = ExtResource( 2 )
 Obstacle = ExtResource( 3 )
+Musician = ExtResource( 4 )
 
 [node name="Tracks" type="Node2D" parent="." index="0"]
 
@@ -22,7 +24,7 @@ Obstacle = ExtResource( 3 )
 position = Vector2( 70, 320 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Player" parent="." index="3" instance=ExtResource( 4 )]
+[node name="Player" parent="." index="3" instance=ExtResource( 5 )]
 
 [node name="Timer" type="Timer" parent="." index="4"]
 
@@ -30,6 +32,8 @@ process_mode = 1
 wait_time = 2.0
 one_shot = true
 autostart = true
+
+[node name="Musicians" type="Node2D" parent="." index="5"]
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 

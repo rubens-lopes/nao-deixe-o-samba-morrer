@@ -1,0 +1,18 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/tamborim.ogg-20a785808cfbb24cb7c71c644a2a5a4c.oggstr"
+
+[deps]
+
+source_file="res://audio/tamborim.ogg"
+source_md5="7164e7bdc0475dac192df8f2601b453b"
+
+dest_files=[ "res://.import/tamborim.ogg-20a785808cfbb24cb7c71c644a2a5a4c.oggstr" ]
+dest_md5="e5293ae2103b4bff55fde4d227b9e544"
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,18 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/agogo.ogg-f579846f8a694256c073cdccf474fe65.oggstr"
+
+[deps]
+
+source_file="res://audio/agogo.ogg"
+source_md5="a85da47f7715d5966e31567b7767a93b"
+
+dest_files=[ "res://.import/agogo.ogg-f579846f8a694256c073cdccf474fe65.oggstr" ]
+dest_md5="3b86302ac6360c4280f0c9937c1f535f"
+
+[params]
+
+loop=true
+loop_offset=0
