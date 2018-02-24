@@ -7,10 +7,10 @@ path="res://.import/road_asphalt40.png-4d61519986cb4987f90a91f29c784e3e.stex"
 [deps]
 
 source_file="res://assets/road_asphalt40.png"
-source_md5="70c8aeeda31d2203502dc0477cc5cc58"
+source_md5="8e0ae55bfb2a3e586a1e4e4c1feebacb"
 
 dest_files=[ "res://.import/road_asphalt40.png-4d61519986cb4987f90a91f29c784e3e.stex" ]
-dest_md5="6c08499e8131858cea3e8ba48baae879"
+dest_md5="177f9dbe416b395977c29011635480e1"
 
 [params]
 

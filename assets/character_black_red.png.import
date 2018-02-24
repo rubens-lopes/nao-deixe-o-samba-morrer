@@ -7,10 +7,10 @@ path="res://.import/character_black_red.png-124d95d1168a4c2d3875deb7c79f3a8a.ste
 [deps]
 
 source_file="res://assets/character_black_red.png"
-source_md5="0cdbc83d01ab5707c4b4fee821b56e48"
+source_md5="603c4d193e0807bf422b856a8e712f4f"
 
 dest_files=[ "res://.import/character_black_red.png-124d95d1168a4c2d3875deb7c79f3a8a.stex" ]
-dest_md5="d86de5a6934fd7401502f2a46f0a99f1"
+dest_md5="f23b1813b38cc7b5f30d4e3094b519e4"
 
 [params]
 
