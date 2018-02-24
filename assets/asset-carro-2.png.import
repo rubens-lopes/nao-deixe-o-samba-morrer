@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/road_asphalt89.png-75af46a3975d6be2339d970f976f6d8f.stex"
+path="res://.import/asset-carro-2.png-d3214fb07fb98fbf699b1051bdc08977.stex"
 
 [deps]
 
-source_file="res://assets/road_asphalt89.png"
-source_md5="037ddc450e73b8a0454e343ab3dd4ffd"
+source_file="res://assets/asset-carro-2.png"
+source_md5="cb194863a5fb2a49474d0c9d2170b8aa"
 
-dest_files=[ "res://.import/road_asphalt89.png-75af46a3975d6be2339d970f976f6d8f.stex" ]
-dest_md5="b0bb0ebe0c72a76fcc903f23b14e0fea"
+dest_files=[ "res://.import/asset-carro-2.png-d3214fb07fb98fbf699b1051bdc08977.stex" ]
+dest_md5="56763102ff522429280561950b61a92f"
 
 [params]
 

@@ -35,6 +35,8 @@ autostart = true
 
 [node name="Musicians" type="Node2D" parent="." index="5"]
 
+_sections_unfolded = [ "Material", "Transform", "Visibility" ]
+
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 
 
