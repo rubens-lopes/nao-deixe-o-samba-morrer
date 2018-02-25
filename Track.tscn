@@ -3,7 +3,7 @@
 [ext_resource path="res://assets/Roads.tres" type="TileSet" id=1]
 [ext_resource path="res://scripts/Track.gd" type="Script" id=2]
 
-[node name="TileMap" type="TileMap" index="0"]
+[node name="TileMap" type="TileMap"]
 
 mode = 0
 tile_set = ExtResource( 1 )
@@ -30,14 +30,15 @@ __meta__ = {
 
 [node name="Visibility" type="VisibilityNotifier2D" parent="." index="0"]
 
-position = Vector2( 1280, 360 )
-rect = Rect2( 0, 0, 0, 0 )
+position = Vector2( 1280, 320 )
+rect = Rect2( -10, -10, 20, 20 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Position2D" type="Position2D" parent="." index="1"]
+[node name="VisibilityStart" type="VisibilityNotifier2D" parent="." index="1"]
 
-position = Vector2( 240, 148 )
-_sections_unfolded = [ "Transform", "Visibility" ]
+position = Vector2( -120, 320 )
+rect = Rect2( -10, -10, 20, 20 )
+_sections_unfolded = [ "Transform" ]
 
 [connection signal="screen_entered" from="Visibility" to="." method="_on_Visibility_screen_entered"]
 

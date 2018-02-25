@@ -10,7 +10,7 @@ custom_solver_bias = 0.0
 radius = 15.5362
 height = 21.9491
 
-[node name="Musician" type="KinematicBody2D"]
+[node name="Musician" type="KinematicBody2D" index="0"]
 
 rotation = 4.71239
 scale = Vector2( 0.3, 0.3 )
@@ -23,6 +23,7 @@ _sections_unfolded = [ "Collision", "Material", "Pause", "Pickable", "Transform"
 __meta__ = {
 "_edit_group_": true
 }
+friction = Vector2( 0.4, 0.65 )
 
 [node name="DebugDraw" parent="." index="0" instance=ExtResource( 2 )]
 
@@ -41,14 +42,17 @@ _sections_unfolded = [ "Transform" ]
 
 stream = null
 volume_db = 0.0
-autoplay = true
+autoplay = false
 mix_target = 0
 bus = "Master"
 
-[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="." index="4"]
+[node name="Timer" type="Timer" parent="." index="4"]
 
-rect = Rect2( -10, -10, 20, 20 )
+process_mode = 1
+wait_time = 2.0
+one_shot = true
+autostart = false
 
-[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 
 

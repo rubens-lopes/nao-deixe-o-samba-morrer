@@ -1,19 +1,17 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scripts/Main.gd" type="Script" id=1]
 [ext_resource path="res://Track.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Cone.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Musician.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=4]
 
-[node name="Main" type="Node2D" index="0"]
+[node name="Main" type="Node2D"]
 
 position = Vector2( 0, 80 )
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
 Track = ExtResource( 2 )
 Obstacle = ExtResource( 3 )
-Musician = ExtResource( 4 )
 
 [node name="Tracks" type="Node2D" parent="." index="0"]
 
@@ -24,27 +22,16 @@ Musician = ExtResource( 4 )
 position = Vector2( 70, 320 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Player" parent="." index="3" instance=ExtResource( 5 )]
+[node name="Player" parent="." index="3" instance=ExtResource( 4 )]
 
-[node name="Timer" type="Timer" parent="." index="4"]
-
-process_mode = 1
-wait_time = 1.0
-one_shot = true
-autostart = false
-
-[node name="Musicians" type="Node2D" parent="." index="5"]
-
-_sections_unfolded = [ "Material", "Transform", "Visibility" ]
-
-[node name="GameOverTimer" type="Timer" parent="." index="6"]
+[node name="GameOverTimer" type="Timer" parent="." index="4"]
 
 process_mode = 1
 wait_time = 1.5
 one_shot = true
 autostart = false
 
-[node name="Score" type="Label" parent="." index="7"]
+[node name="Score" type="Label" parent="." index="5"]
 
 anchor_left = 0.5
 anchor_top = 0.0
@@ -59,20 +46,21 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-text = "dist.: 0 time: 0"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Margin", "Rect" ]
 
-[node name="ScoreTimer" type="Timer" parent="." index="8"]
+[node name="ScoreTimer" type="Timer" parent="." index="6"]
 
 process_mode = 1
 wait_time = 1.0
 one_shot = false
 autostart = false
 
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="game_over" from="." to="Player" method="_on_Main_game_over"]
+
+[connection signal="new_game" from="." to="Player" method="_on_Main_new_game"]
 
 [connection signal="timeout" from="GameOverTimer" to="." method="_on_GameOverTimer_timeout"]
 

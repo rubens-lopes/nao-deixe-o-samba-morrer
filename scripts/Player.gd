@@ -1,19 +1,21 @@
 extends KinematicBody2D
 
 signal hit
-signal moved
+signal musicians_count_changed
 
-var acceleration = Vector2(500, 1500)
-var friction = Vector2(-10, -150)
-var bounce_coefficent = 0.2
+export (PackedScene) var Musician
+
+export var acceleration = Vector2(500, 1500)
+export var friction = Vector2(-10, -150)
+export var bounce_coefficent = 0.2
+export var max_velocity = Vector3(500, 700, 1500)
+
 var velocity = Vector2()
 var can_move = false
-
 var state = IDLE
-enum {THRUST, AUTO_BREAK, BREAK, IDLE}
+var musicians = 0
 
-func _ready():
-	pass
+enum {THRUST, AUTO_BREAK, BREAK, IDLE}
 
 func _physics_process(delta):
 	if not can_move:
@@ -46,16 +48,70 @@ func _physics_process(delta):
 	
 	velocity += acc * delta
 	match state:
-		AUTO_BREAK: velocity.x = max(velocity.x, 750)
-		THRUST: velocity.x = min(velocity.x, 1500)
-		BREAK: velocity.x = max(velocity.x, 500)
-		IDLE: velocity.x = min(velocity.x, 750)
+		AUTO_BREAK: velocity.x = max(velocity.x, max_velocity.y)
+		THRUST: velocity.x = min(velocity.x, max_velocity.z)
+		BREAK: velocity.x = max(velocity.x, max_velocity.x)
+		IDLE: velocity.x = min(velocity.x, max_velocity.y)
 	
 	var collision = move_and_collide(velocity * delta)
-
+	
 	if collision:
-		emit_signal("hit", collision.travel, collision.remainder)
+		emit_signal('hit', collision.remainder / delta)
 		velocity = velocity.bounce(collision.normal) * bounce_coefficent
-	else:
-		emit_signal("moved", velocity)
-		
+
+func _on_Main_new_game():
+	$Timer.start()
+	velocity = Vector2()
+	
+	var instruments = [
+		preload("res://audio/agogo.ogg"),
+		preload("res://audio/baixo.ogg"),
+		preload("res://audio/caixa.ogg"),
+		preload("res://audio/cavaco.ogg"),
+		preload("res://audio/chocalho.ogg"),
+		preload("res://audio/pandeiro.ogg"),
+		preload("res://audio/surdo.ogg"),
+		preload("res://audio/tamborim.ogg"),
+		preload("res://audio/vozes.ogg")
+	]
+
+	musicians = len(instruments)
+	var positions = []
+	while instruments:
+		var pos = randi() % 9
+		if pos in positions:
+			continue
+
+		positions.append(pos)
+		var start = get_node('MusicianStart%s' % pos)
+
+		var musician = Musician.instance()
+		var instrument = instruments.pop_back()
+		musician.get_node('Instrument').stream = instrument
+		musician.position = start.position
+		musician.rotation = rand_range(0, 2 * PI)
+		connect('hit', musician, '_on_Player_hit')
+		get_parent().connect('game_over', musician, '_on_Main_game_over')
+		get_node('Timer').connect('timeout', musician, '_on_PlayerTimer_timeout')
+		add_child(musician) 
+
+func _on_Timer_timeout():
+	can_move = true
+
+func _on_Deck_body_exited(body):
+	if not is_connected('hit', body, '_on_Player_hit'):
+		return
+	
+	disconnect('hit', body, '_on_Player_hit')
+	musicians -= 1
+	emit_signal('musicians_count_changed', musicians)
+	
+	var pos = body.global_position
+	pos.y -= 80
+	call_deferred('remove_child', body)
+	get_parent().call_deferred('add_child', body)
+	
+	body.fall(pos)
+
+func _on_Main_game_over():
+	can_move = false

@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
-[ext_resource path="res://assets/car_yellow_4.png" type="Texture" id=2]
-[ext_resource path="res://DebugDraw.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Musician.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/car_yellow_4.png" type="Texture" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
 
@@ -13,9 +13,9 @@ height = 62.0
 [sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
-extents = Vector2( 35.1838, 34.6564 )
+extents = Vector2( 33.3417, 32.3705 )
 
-[node name="Player" type="KinematicBody2D"]
+[node name="Player" type="KinematicBody2D" index="0"]
 
 position = Vector2( 70, 400 )
 rotation = 1.5708
@@ -25,10 +25,15 @@ collision_mask = 2
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
 _sections_unfolded = [ "Collision", "Material", "Pause", "Pickable", "Transform", "Visibility", "Z Index", "collision" ]
+Musician = ExtResource( 2 )
+acceleration = Vector2( 500, 1500 )
+friction = Vector2( -10, -150 )
+bounce_coefficent = 0.2
+max_velocity = Vector3( 500, 700, 1500 )
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 _sections_unfolded = [ "Animation", "Material", "Offset", "Pause", "Region", "Transform", "Visibility", "Z Index" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
@@ -63,11 +68,9 @@ editor_draw_limits = true
 editor_draw_drag_margin = true
 _sections_unfolded = [ "Drag Margin", "Editor", "Limit", "Material", "Offset", "Pause", "Smoothing", "Transform", "Visibility", "Z Index" ]
 
-[node name="DebugDraw" parent="." index="3" instance=ExtResource( 3 )]
+[node name="Deck" type="Area2D" parent="." index="3"]
 
-[node name="Deck" type="Area2D" parent="." index="4"]
-
-position = Vector2( -5.25521, 19.1576 )
+position = Vector2( -5.25521, 20.1576 )
 scale = Vector2( 0.90386, 1.37119 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -89,61 +92,51 @@ position = Vector2( 0.345406, -1.99173 )
 shape = SubResource( 2 )
 _sections_unfolded = [ "Material", "Pause", "Transform", "Visibility", "Z Index" ]
 
-[node name="ColorRect" type="ColorRect" parent="." index="5"]
+[node name="Timer" type="Timer" parent="." index="4"]
 
-visible = false
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = -35.0
-margin_right = 35.0
-margin_bottom = 64.0
-rect_pivot_offset = Vector2( 0, 0 )
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-color = Color( 1, 1, 1, 1 )
-_sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Hint", "Margin", "Material", "Mouse", "Pause", "Rect", "Size Flags", "Theme", "Visibility" ]
+process_mode = 1
+wait_time = 2.0
+one_shot = true
+autostart = false
 
-[node name="MusicianStart0" type="Position2D" parent="." index="6"]
+[node name="MusicianStart0" type="Position2D" parent="." index="5"]
 
-position = Vector2( -23.5946, 49.3613 )
-_sections_unfolded = [ "Transform" ]
+position = Vector2( 0.693787, -0.925095 )
+
+[node name="MusicianStart1" type="Position2D" parent="." index="6"]
+
+position = Vector2( 12.4887, 18.5017 )
 
 [node name="MusicianStart2" type="Position2D" parent="." index="7"]
 
-position = Vector2( -1.60336, 34.7078 )
-_sections_unfolded = [ "Transform" ]
+position = Vector2( -1.61874, 38.6224 )
 
 [node name="MusicianStart3" type="Position2D" parent="." index="8"]
 
-position = Vector2( 8.92497, 47.985 )
-_sections_unfolded = [ "Transform" ]
+position = Vector2( 12.9514, 47.6419 )
 
 [node name="MusicianStart4" type="Position2D" parent="." index="9"]
 
-position = Vector2( -20.8293, 27.0639 )
+position = Vector2( -16.189, 22.2022 )
 
 [node name="MusicianStart5" type="Position2D" parent="." index="10"]
 
-position = Vector2( -22.1026, -12.1289 )
+position = Vector2( 9.01956, -17.808 )
 
 [node name="MusicianStart6" type="Position2D" parent="." index="11"]
 
-position = Vector2( -16.0608, 8.78538 )
+position = Vector2( -19.8892, 44.8668 )
 
 [node name="MusicianStart7" type="Position2D" parent="." index="12"]
 
-position = Vector2( 13.3453, 17.5175 )
+position = Vector2( -20.1206, 2.54407 )
 
 [node name="MusicianStart8" type="Position2D" parent="." index="13"]
 
-position = Vector2( 10.7928, -12.3206 )
+position = Vector2( -23.821, -18.2704 )
 
-[node name="MusicianStart1" type="Position2D" parent="." index="14"]
+[connection signal="body_exited" from="Deck" to="." method="_on_Deck_body_exited"]
 
-position = Vector2( -2.86839, -3.32804 )
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 
 

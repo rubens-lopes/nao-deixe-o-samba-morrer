@@ -1,25 +1,38 @@
 extends KinematicBody2D
 
+export var friction = Vector2(0.4, 0.65)
+
+var _friction
 var velocity = Vector2(0, 0)
-var friction = -0.2
-var use_friction = false
 
 func _ready():
-	pass
+	_friction = rand_range(friction.x, friction.y)
+#	print('%s: %s' % [name, _friction])
 
-var _delta
 func _physics_process(delta):
-	_delta = delta
-	move_and_slide(velocity)# * (friction * delta) if use_friction else Vector2(1, 1))
-	pass
+	var acc = velocity * -friction
+	velocity += acc
+	
+	move_and_slide(velocity)
 
-func _on_Player_moved(vel):
-	velocity = vel
+func _on_Player_hit(reminder):
+	velocity = reminder.rotated(rand_range(0, 2 * PI))
 
-func _on_Player_hit(travel, reminder):
-	var v = (reminder + travel) * (rand_range(0, 3) - friction) / _delta
-	v.rotated(rand_range(0, 2 * PI))
-	velocity = v
+func _on_Main_game_over():
+	$Timer.start()
 
-func _on_VisibilityNotifier2D_screen_exited():
+func _on_Timer_timeout():
 	queue_free()
+
+func _on_PlayerTimer_timeout():
+	$Instrument.play()
+
+func fall(pos):
+	print('fall')
+	print($Instrument.stream.resource_name)
+	$Instrument.stop()
+	collision_layer = 0
+	collision_mask = 0
+	_friction = 0.0001
+	position = pos
+	velocity *= 25
