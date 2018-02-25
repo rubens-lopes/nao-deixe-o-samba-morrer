@@ -38,20 +38,23 @@ func add_track():
 	$Tracks.add_child(track)
 	
 	var n_obstacles = round(rand_range(2, 5))
-	var obs = []
+	var obs = {}
 	while len(obs) < n_obstacles:
 		var t_pos = track.world_to_map(
 				Vector2(rand_range(last_position + (512 if last_position == 0 else 0), 
 						last_position + screen_size.x), 
 				rand_range(128, 512)))
-		
+			
 		var pos = t_pos * 128
 		pos.y += 64
 		
-		if pos in obs:
-			continue
+		if pos.x in obs:
+			if pos.y in obs[pos.x] or len(obs[pos.x]) >= 2:
+				continue
+		else:
+			obs[pos.x] = []
 			
-		obs.append(pos)
+		obs[pos.x].append(pos.y)
 		var obstacle = Obstacle.instance()
 		obstacle.position = pos
 		$Obstacles.add_child(obstacle)

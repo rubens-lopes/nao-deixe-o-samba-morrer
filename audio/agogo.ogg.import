@@ -7,10 +7,10 @@ path="res://.import/agogo.ogg-f579846f8a694256c073cdccf474fe65.oggstr"
 [deps]
 
 source_file="res://audio/agogo.ogg"
-source_md5="a85da47f7715d5966e31567b7767a93b"
+source_md5="6ff6c91c3d014c15c042b7daf6daf959"
 
 dest_files=[ "res://.import/agogo.ogg-f579846f8a694256c073cdccf474fe65.oggstr" ]
-dest_md5="3b86302ac6360c4280f0c9937c1f535f"
+dest_md5="1ef213acbb6dd0d05e88eff9cc8bf82a"
 
 [params]
 

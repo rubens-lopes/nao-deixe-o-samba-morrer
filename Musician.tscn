@@ -1,8 +1,29 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scripts/Musician.gd" type="Script" id=1]
 [ext_resource path="res://DebugDraw.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/character_black_red.png" type="Texture" id=3]
+[ext_resource path="res://assets/character_black_red_flip.png" type="Texture" id=4]
+[ext_resource path="res://audio/wilhelm.wav" type="AudioStream" id=5]
+
+[sub_resource type="SpriteFrames" id=2]
+
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "3",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "1",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "2",
+"speed": 3.0
+} ]
 
 [sub_resource type="CapsuleShape2D" id=1]
 
@@ -23,14 +44,16 @@ _sections_unfolded = [ "Collision", "Material", "Pause", "Pickable", "Transform"
 __meta__ = {
 "_edit_group_": true
 }
-friction = Vector2( 0.4, 0.65 )
+friction = Vector2( 0.45, 0.65 )
 
 [node name="DebugDraw" parent="." index="0" instance=ExtResource( 2 )]
 
-[node name="Sprite" type="Sprite" parent="." index="1"]
+[node name="Sprite" type="AnimatedSprite" parent="." index="1"]
 
-texture = ExtResource( 3 )
-_sections_unfolded = [ "Transform" ]
+frames = SubResource( 2 )
+animation = "1"
+playing = true
+_sections_unfolded = [ "Animation", "Offset", "Region", "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
 
@@ -52,6 +75,14 @@ process_mode = 1
 wait_time = 2.0
 one_shot = true
 autostart = false
+
+[node name="Wilhelm" type="AudioStreamPlayer" parent="." index="5"]
+
+stream = ExtResource( 5 )
+volume_db = -2.0
+autoplay = false
+mix_target = 0
+bus = "Master"
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 

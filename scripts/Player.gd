@@ -5,7 +5,7 @@ signal musicians_count_changed
 
 export (PackedScene) var Musician
 
-export var acceleration = Vector2(500, 1500)
+export var acceleration = Vector2(350, 1500)
 export var friction = Vector2(-10, -150)
 export var bounce_coefficent = 0.2
 export var max_velocity = Vector3(500, 700, 1500)
@@ -58,6 +58,8 @@ func _physics_process(delta):
 	if collision:
 		emit_signal('hit', collision.remainder / delta)
 		velocity = velocity.bounce(collision.normal) * bounce_coefficent
+		if not $Crash.playing:
+			$Crash.play()
 
 func _on_Main_new_game():
 	$Timer.start()
@@ -71,6 +73,7 @@ func _on_Main_new_game():
 		preload("res://audio/chocalho.ogg"),
 		preload("res://audio/pandeiro.ogg"),
 		preload("res://audio/surdo.ogg"),
+		preload("res://audio/melodia.ogg"),
 		preload("res://audio/tamborim.ogg"),
 		preload("res://audio/vozes.ogg")
 	]
@@ -78,7 +81,7 @@ func _on_Main_new_game():
 	musicians = len(instruments)
 	var positions = []
 	while instruments:
-		var pos = randi() % 9
+		var pos = randi() % 10
 		if pos in positions:
 			continue
 

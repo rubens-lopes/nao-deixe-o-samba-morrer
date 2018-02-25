@@ -1,12 +1,14 @@
 extends KinematicBody2D
 
-export var friction = Vector2(0.4, 0.65)
+export var friction = Vector2(0.45, 0.65)
 
 var _friction
 var velocity = Vector2(0, 0)
+var animations = ['1', '2', '3']
 
 func _ready():
 	_friction = rand_range(friction.x, friction.y)
+	$Sprite.animation = animations[randi()%animations.size()]
 #	print('%s: %s' % [name, _friction])
 
 func _physics_process(delta):
@@ -28,8 +30,7 @@ func _on_PlayerTimer_timeout():
 	$Instrument.play()
 
 func fall(pos):
-	print('fall')
-	print($Instrument.stream.resource_name)
+	$Wilhelm.play()
 	$Instrument.stop()
 	collision_layer = 0
 	collision_mask = 0

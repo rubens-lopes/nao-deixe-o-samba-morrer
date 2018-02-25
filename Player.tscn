@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Musician.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/car_yellow_4.png" type="Texture" id=3]
+[ext_resource path="res://audio/batida.wav" type="AudioStream" id=4]
 
 [sub_resource type="CapsuleShape2D" id=1]
 
@@ -15,7 +16,7 @@ height = 62.0
 custom_solver_bias = 0.0
 extents = Vector2( 33.3417, 32.3705 )
 
-[node name="Player" type="KinematicBody2D" index="0"]
+[node name="Player" type="KinematicBody2D"]
 
 position = Vector2( 70, 400 )
 rotation = 1.5708
@@ -26,7 +27,7 @@ collision/safe_margin = 0.08
 script = ExtResource( 1 )
 _sections_unfolded = [ "Collision", "Material", "Pause", "Pickable", "Transform", "Visibility", "Z Index", "collision" ]
 Musician = ExtResource( 2 )
-acceleration = Vector2( 500, 1500 )
+acceleration = Vector2( 350, 1500 )
 friction = Vector2( -10, -150 )
 bounce_coefficent = 0.2
 max_velocity = Vector3( 500, 700, 1500 )
@@ -101,23 +102,23 @@ autostart = false
 
 [node name="MusicianStart0" type="Position2D" parent="." index="5"]
 
-position = Vector2( 0.693787, -0.925095 )
+position = Vector2( -4.53534, -6.50276 )
 
 [node name="MusicianStart1" type="Position2D" parent="." index="6"]
 
-position = Vector2( 12.4887, 18.5017 )
+position = Vector2( 13.5345, 8.39214 )
 
 [node name="MusicianStart2" type="Position2D" parent="." index="7"]
 
-position = Vector2( -1.61874, 38.6224 )
+position = Vector2( 2.56451, 35.8335 )
 
 [node name="MusicianStart3" type="Position2D" parent="." index="8"]
 
-position = Vector2( 12.9514, 47.6419 )
+position = Vector2( 12.9514, 45.5503 )
 
 [node name="MusicianStart4" type="Position2D" parent="." index="9"]
 
-position = Vector2( -16.189, 22.2022 )
+position = Vector2( -23.5097, 23.9453 )
 
 [node name="MusicianStart5" type="Position2D" parent="." index="10"]
 
@@ -134,6 +135,19 @@ position = Vector2( -20.1206, 2.54407 )
 [node name="MusicianStart8" type="Position2D" parent="." index="13"]
 
 position = Vector2( -23.821, -18.2704 )
+
+[node name="MusicianStart9" type="Position2D" parent="." index="14"]
+
+position = Vector2( -3.95038, 20.0761 )
+
+[node name="Crash" type="AudioStreamPlayer" parent="." index="15"]
+
+stream = ExtResource( 4 )
+volume_db = -2.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+_sections_unfolded = [ "Pause" ]
 
 [connection signal="body_exited" from="Deck" to="." method="_on_Deck_body_exited"]
 

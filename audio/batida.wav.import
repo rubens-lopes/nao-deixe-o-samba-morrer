@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/batida.wav-7751c97e79ede1341439d050d778560b.sample"
+
+[deps]
+
+source_file="res://audio/batida.wav"
+source_md5="a329f57cd1edb68efdb3d577b18e5700"
+
+dest_files=[ "res://.import/batida.wav-7751c97e79ede1341439d050d778560b.sample" ]
+dest_md5="6b94fd42fc56cc518a2b927e0c2de47b"
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

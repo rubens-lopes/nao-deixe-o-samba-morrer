@@ -7,10 +7,10 @@ path="res://.import/cavaco.ogg-3a2ab348d2fa4292db28adb1e36ab9e4.oggstr"
 [deps]
 
 source_file="res://audio/cavaco.ogg"
-source_md5="1ca423a01c6f5ebfe18d6d902d6607dc"
+source_md5="bc53458d7eaadfb4dd14ef82616c0e48"
 
 dest_files=[ "res://.import/cavaco.ogg-3a2ab348d2fa4292db28adb1e36ab9e4.oggstr" ]
-dest_md5="11ac3abda3981bfa493a54a52793da6e"
+dest_md5="eb2adb96cbffa2ed8475b65fe1b932cf"
 
 [params]
 

@@ -7,10 +7,10 @@ path="res://.import/pandeiro.ogg-ab9a794514ab19a81c2ec7035c74ecf8.oggstr"
 [deps]
 
 source_file="res://audio/pandeiro.ogg"
-source_md5="c1b7e0b8cb13bd32ae71bdc01c29a126"
+source_md5="1272b5db7242942e5a90ef09e824477e"
 
 dest_files=[ "res://.import/pandeiro.ogg-ab9a794514ab19a81c2ec7035c74ecf8.oggstr" ]
-dest_md5="97a1467816e897929be7fe6df83ba3a6"
+dest_md5="79194287f436ebb00f804f673f13d9ef"
 
 [params]
 

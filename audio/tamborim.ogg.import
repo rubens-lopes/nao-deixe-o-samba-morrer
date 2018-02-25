@@ -7,10 +7,10 @@ path="res://.import/tamborim.ogg-20a785808cfbb24cb7c71c644a2a5a4c.oggstr"
 [deps]
 
 source_file="res://audio/tamborim.ogg"
-source_md5="7164e7bdc0475dac192df8f2601b453b"
+source_md5="7ecec8c40e0861ec75fdd40f695809ab"
 
 dest_files=[ "res://.import/tamborim.ogg-20a785808cfbb24cb7c71c644a2a5a4c.oggstr" ]
-dest_md5="e5293ae2103b4bff55fde4d227b9e544"
+dest_md5="459e7a785696ae1418636d9e5698aa34"
 
 [params]
 

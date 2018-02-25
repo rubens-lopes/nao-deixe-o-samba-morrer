@@ -7,10 +7,10 @@ path="res://.import/baixo.ogg-3038eafc0d1cdb937556bb04483af4ed.oggstr"
 [deps]
 
 source_file="res://audio/baixo.ogg"
-source_md5="0e079489b7b6410e1ad2b6c3b754b846"
+source_md5="154f7316f03f11bae4f640227ca929e2"
 
 dest_files=[ "res://.import/baixo.ogg-3038eafc0d1cdb937556bb04483af4ed.oggstr" ]
-dest_md5="0dc14e6bbe7e32499b052d99bae745c9"
+dest_md5="d6251f4b424c41a60187ec54ed1b3770"
 
 [params]
 

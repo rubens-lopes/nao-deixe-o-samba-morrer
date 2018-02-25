@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/wilhelm.wav-b7b7b4dd75f6fb4fad98f68fd71f0cf6.sample"
+
+[deps]
+
+source_file="res://audio/wilhelm.wav"
+source_md5="723344d319704ce39c3b9533e67112b7"
+
+dest_files=[ "res://.import/wilhelm.wav-b7b7b4dd75f6fb4fad98f68fd71f0cf6.sample" ]
+dest_md5="6b35bd6fe38dac8c7d803c5ab23a8604"
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
