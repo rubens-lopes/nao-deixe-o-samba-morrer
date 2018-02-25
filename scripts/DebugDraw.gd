@@ -12,8 +12,8 @@ var colors = {
 	'GREEN': Color(.054, .718, .247, 0.7)
 }
 
-const WIDTH = 15
-const ARROW_SIZE = 20
+const WIDTH = 7
+const ARROW_SIZE = 10
 const VIEW_TOGGLE = "ui_focus_next"
 var parent = null
 

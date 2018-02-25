@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scripts/Musician.gd" type="Script" id=1]
-[ext_resource path="res://assets/character_black_red.png" type="Texture" id=2]
+[ext_resource path="res://DebugDraw.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/character_black_red.png" type="Texture" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
 
@@ -12,7 +13,7 @@ height = 21.9491
 [node name="Musician" type="KinematicBody2D"]
 
 rotation = 4.71239
-scale = Vector2( 0.2, 0.2 )
+scale = Vector2( 0.3, 0.3 )
 input_pickable = false
 collision_layer = 4
 collision_mask = 4
@@ -23,17 +24,20 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Sprite" type="Sprite" parent="." index="0"]
+[node name="DebugDraw" parent="." index="0" instance=ExtResource( 2 )]
 
-texture = ExtResource( 2 )
+[node name="Sprite" type="Sprite" parent="." index="1"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+texture = ExtResource( 3 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
 
 rotation = 1.5708
 shape = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Instrument" type="AudioStreamPlayer" parent="." index="2"]
+[node name="Instrument" type="AudioStreamPlayer" parent="." index="3"]
 
 stream = null
 volume_db = 0.0
@@ -41,7 +45,7 @@ autoplay = true
 mix_target = 0
 bus = "Master"
 
-[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="." index="3"]
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="." index="4"]
 
 rect = Rect2( -10, -10, 20, 20 )
 

@@ -1,31 +1,43 @@
 extends Node2D
 
+signal game_over
+
 export (PackedScene) var Track
 export (PackedScene) var Obstacle
 export (PackedScene) var Musician
 
 onready var screen_size = get_viewport_rect().size
 
-var instruments = [
-	preload("res://audio/agogo.ogg"),
-	preload("res://audio/baixo.ogg"),
-	preload("res://audio/caixa.ogg"),
-	preload("res://audio/cavaco.ogg"),
-	preload("res://audio/chocalho.ogg"),
-	preload("res://audio/pandeiro.ogg"),
-	preload("res://audio/surdo.ogg"),
-	preload("res://audio/tamborim.ogg"),
-	preload("res://audio/vozes.ogg")
-	]
-	
-var last_position = 0
+var last_position
+var musicians
+var time
 
 func _ready():
 	randomize()
-	$Player.position = $StartPosition.position
 	$Player/Deck.connect("body_exited", self, "_on_Musician_exited")
+	new_game()
+func new_game():
+	last_position = 0
+	time = 0
+	_game_over = false
+	$Timer.start()
+	$Player.position = $StartPosition.position
+	$Player.velocity = Vector2(0, 0)
 	add_track()
 	
+	var instruments = [
+		preload("res://audio/agogo.ogg"),
+		preload("res://audio/baixo.ogg"),
+		preload("res://audio/caixa.ogg"),
+		preload("res://audio/cavaco.ogg"),
+		preload("res://audio/chocalho.ogg"),
+		preload("res://audio/pandeiro.ogg"),
+		preload("res://audio/surdo.ogg"),
+		preload("res://audio/tamborim.ogg"),
+		preload("res://audio/vozes.ogg")
+	]
+	
+	musicians = len(instruments)
 	var positions = []
 	while instruments:
 		var pos = randi() % 9
@@ -42,6 +54,7 @@ func _ready():
 		musician.position = pos
 		musician.rotation = rand_range(0, 2 * PI)
 		$Player.connect("moved", musician, '_on_Player_moved') 
+		$Player.connect("hit", musician, '_on_Player_hit') 
 		$Musicians.add_child(musician)
 
 func add_track():
@@ -72,9 +85,45 @@ func add_track():
 		
 	last_position += screen_size.x
 
+var _game_over = false 
+func _process(delta):
+	var pos = $Player.position
+	pos.y = $Score.rect_position.y
+	$Score.rect_position = pos
+	
+	var dist = int(floor(($Player.position.x - 70) / 10))
+	$Score.text = 'dist.: %s meters | time: %s seconds | %s musicians' % [dist, time, musicians]
+	
+	if not _game_over and musicians < 1:
+		_game_over = true
+		game_over()
+	pass
+	
+func game_over():
+	$Player.can_move = false
+	$GameOverTimer.start()
+	$ScoreTimer.stop()
+	
+func _on_GameOverTimer_timeout():
+	new_game()
+	
 func _on_Timer_timeout():
 	$Player.can_move = true
+	$ScoreTimer.start()
 	pass
 
 func _on_Musician_exited(body):
-	body.queue_free()
+	if not $Player.is_connected('moved', body, '_on_Player_moved'):
+		return
+	
+	$Player.disconnect('moved', body, '_on_Player_moved')
+	$Player.disconnect('hit', body, '_on_Player_hit')
+	body.velocity.x = 0
+	body.collision_layer = 0
+	body.collision_mask = 0
+	musicians -= 1
+	body.get_node('Instrument').stop()
+
+func _on_ScoreTimer_timeout():
+	time += 1
+	pass # replace with function body

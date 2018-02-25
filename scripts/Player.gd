@@ -5,7 +5,7 @@ signal moved
 
 var acceleration = Vector2(500, 1500)
 var friction = Vector2(-10, -150)
-var bounce_coefficent = 0.5
+var bounce_coefficent = 0.2
 var velocity = Vector2()
 var can_move = false
 
@@ -45,15 +45,17 @@ func _physics_process(delta):
 		acc.x = velocity.x * friction.x * delta
 	
 	velocity += acc * delta
-	match(state):
+	match state:
 		AUTO_BREAK: velocity.x = max(velocity.x, 750)
 		THRUST: velocity.x = min(velocity.x, 1500)
 		BREAK: velocity.x = max(velocity.x, 500)
 		IDLE: velocity.x = min(velocity.x, 750)
 	
 	var collision = move_and_collide(velocity * delta)
-	emit_signal("moved", velocity)
 
 	if collision:
-		emit_signal("hit")
+		emit_signal("hit", collision.travel, collision.remainder)
 		velocity = velocity.bounce(collision.normal) * bounce_coefficent
+	else:
+		emit_signal("moved", velocity)
+		

@@ -13,10 +13,11 @@ height = 62.0
 [sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
-extents = Vector2( 34.884, 32.346 )
+extents = Vector2( 35.1838, 34.6564 )
 
 [node name="Player" type="KinematicBody2D"]
 
+position = Vector2( 70, 400 )
 rotation = 1.5708
 input_pickable = false
 collision_layer = 1
@@ -24,9 +25,6 @@ collision_mask = 2
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
 _sections_unfolded = [ "Collision", "Material", "Pause", "Pickable", "Transform", "Visibility", "Z Index", "collision" ]
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
@@ -69,7 +67,8 @@ _sections_unfolded = [ "Drag Margin", "Editor", "Limit", "Material", "Offset", "
 
 [node name="Deck" type="Area2D" parent="." index="4"]
 
-position = Vector2( 0, 32 )
+position = Vector2( -5.25521, 19.1576 )
+scale = Vector2( 0.90386, 1.37119 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 0.0
@@ -80,9 +79,13 @@ collision_mask = 4
 audio_bus_override = false
 audio_bus_name = "Master"
 _sections_unfolded = [ "Audio Bus", "Collision", "Material", "Pause", "Pickable", "Transform", "Visibility", "Z Index" ]
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Deck" index="0"]
 
+position = Vector2( 0.345406, -1.99173 )
 shape = SubResource( 2 )
 _sections_unfolded = [ "Material", "Pause", "Transform", "Visibility", "Z Index" ]
 
@@ -106,41 +109,41 @@ _sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Hint", "Margin", "M
 
 [node name="MusicianStart0" type="Position2D" parent="." index="6"]
 
-position = Vector2( -23.8481, 51.7955 )
+position = Vector2( -23.5946, 49.3613 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="MusicianStart2" type="Position2D" parent="." index="7"]
 
-position = Vector2( 0.372821, 51.4228 )
+position = Vector2( -1.60336, 34.7078 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="MusicianStart3" type="Position2D" parent="." index="8"]
 
-position = Vector2( 24.5937, 51.7954 )
+position = Vector2( 8.92497, 47.985 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="MusicianStart4" type="Position2D" parent="." index="9"]
 
-position = Vector2( -23.8481, 30.9283 )
+position = Vector2( -20.8293, 27.0639 )
 
 [node name="MusicianStart5" type="Position2D" parent="." index="10"]
 
-position = Vector2( -23.8482, 9.68844 )
+position = Vector2( -22.1026, -12.1289 )
 
 [node name="MusicianStart6" type="Position2D" parent="." index="11"]
 
-position = Vector2( 0.000106567, 29.4377 )
+position = Vector2( -16.0608, 8.78538 )
 
 [node name="MusicianStart7" type="Position2D" parent="." index="12"]
 
-position = Vector2( 24.221, 28.6923 )
+position = Vector2( 13.3453, 17.5175 )
 
 [node name="MusicianStart8" type="Position2D" parent="." index="13"]
 
-position = Vector2( 23.103, 8.19775 )
+position = Vector2( 10.7928, -12.3206 )
 
 [node name="MusicianStart1" type="Position2D" parent="." index="14"]
 
-position = Vector2( 0.745282, 8.19783 )
+position = Vector2( -2.86839, -3.32804 )
 
 
