@@ -75,7 +75,7 @@ func _on_Main_new_game():
 		preload("res://audio/surdo.ogg"),
 		preload("res://audio/melodia.ogg"),
 		preload("res://audio/tamborim.ogg"),
-		preload("res://audio/vozes.ogg")
+#		preload("res://audio/vozes.ogg")
 	]
 
 	musicians = len(instruments)

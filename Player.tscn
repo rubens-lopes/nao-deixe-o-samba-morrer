@@ -16,7 +16,7 @@ height = 62.0
 custom_solver_bias = 0.0
 extents = Vector2( 33.3417, 32.3705 )
 
-[node name="Player" type="KinematicBody2D"]
+[node name="Player" type="KinematicBody2D" index="0"]
 
 position = Vector2( 70, 400 )
 rotation = 1.5708
